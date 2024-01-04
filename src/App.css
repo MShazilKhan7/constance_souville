@@ -1,38 +1,80 @@
-.App {
-  text-align: center;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: "PPeditorial-Regular";
+  src: url(../public/fonts/PPEditorialNew-Regular.woff2);
+}
+@font-face {
+  font-family: "PPeditorial-light";
+  src: url(../public/fonts/PPEditorialNew-Light.woff2);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@font-face {
+  font-family: "PPeditorial-italic";
+  src: url(../public/fonts/PPEditorialNew-Italic.woff2);
+}
+@font-face {
+  font-family: "PPeditorial-lightItalic";
+  src: url(../public/fonts/PPEditorialNew-LightItalic.woff2);
+}
+@font-face {
+  font-family: "PPmontreal-Med";
+  src: url(../public/fonts/PPNeueMontreal-Medium.woff2);
+}
+@font-face {
+  font-family: "PPmontreal-reg";
+  src: url(../public/fonts/PPNeueMontreal-Regular.woff2);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+html,body{
+  width: 100%;
+  height: 100%;
+}
+
+
+:root{
+  --bodyColor: #B0B0A6;
+  --mainContainerColor: #C1C0B6;
+  --fontColor: #3F3B37;
+}
+
+
+body{
+  background-color: var(--bodyColor);
+  padding: 10px;
+}
+
+.main{
+  background-color: var(--mainContainerColor);
+}
+
+.firstHeadingContainer{
+  /* background-color: green; */
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  font-size: 110px;
+  font-family: "PPeditorial-light";
+  font-weight: 500;
+  color: #3F3B37;
+  background-color: red;
 }
-
-.App-link {
-  color: #61dafb;
+.firstHeadingContainer .left span:nth-child(2){
+  font-family: "PPeditorial-lightItalic";
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.firstHeadingContainer .right span:nth-child(3){
+  font-family: "PPeditorial-lightItalic";
+}
+.firstHeadingContainer .left span{
+  margin-right:-4px;
+}
+.firstHeadingContainer .right{
+  margin-right: 50px;
+}
+.firstHeadingContainer .right span{
+  font-size: 110px;
 }
