@@ -41,6 +41,7 @@ html,body{
   --bodyColor: #B0B0A6;
   --mainContainerColor: #C1C0B6;
   --fontColor: #3F3B37;
+  --transitionColor: #3f3b37;
 }
 
 
@@ -51,8 +52,16 @@ body{
 
 .main{
   background-color: var(--mainContainerColor);
-}
 
+}
+.main-container{
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
+  font-family: "PPeditorial-light";
+  font-size: 110px;
+  color: var(--fontColor);
+  height: 100%;
+}
 .firstHeadingContainer{
   /* background-color: green; */
   display: flex;
@@ -61,7 +70,6 @@ body{
   font-family: "PPeditorial-light";
   font-weight: 500;
   color: #3F3B37;
-  background-color: red;
 }
 .firstHeadingContainer .left span:nth-child(2){
   font-family: "PPeditorial-lightItalic";
@@ -69,12 +77,81 @@ body{
 .firstHeadingContainer .right span:nth-child(3){
   font-family: "PPeditorial-lightItalic";
 }
-.firstHeadingContainer .left span{
+.firstHeadingContainer div span{
   margin-right:-4px;
 }
-.firstHeadingContainer .right{
-  margin-right: 50px;
+
+.main-container div{
+  display: flex;
+  justify-content: space-between;
 }
-.firstHeadingContainer .right span{
+.secondHeadingContainer{
+    position: relative;
+    padding: 5px;
+    overflow: hidden;
+    line-height: 0.9;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+}
+
+.secondHeadingContainer .loader{
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3F3B37;
+  color: wheat;
   font-size: 110px;
+}
+
+.loader div{
+  width: 60%;
+  display: flex;
+  justify-content: center;
+}
+.loader div 
+.fourthHeadingContainer .right span:nth-child(2){
+  padding-right: 20px;
+} 
+.secondHeadingContainer,.thirdHeadingContainer,.fourthHeadingContainer{
+  font-family: "PPmontreal-reg";
+}
+
+.secondHeadingContainer div span{
+  margin-right: -6px;
+}
+.thirdHeadingContainer div span{
+  margin-right: -6px;
+}
+.fourthHeadingContainer div span{
+  margin-right: -6px;
+}
+/* card styling */
+
+.card{
+  width: 13rem;
+  max-height: 100%;
+  padding: 1.2rem 2.4rem 1.2rem 1.2rem;
+  transition: .4s cubic-bezier(.215,.61,.355,1), 0s;
+  transition-delay: .15s,0s;
+  border-bottom-right-radius: 2.2rem;
+  background-color: rebeccapurple;
+  display: flex;
+  align-items: flex-end;  
+}
+
+
+.information{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
 }
