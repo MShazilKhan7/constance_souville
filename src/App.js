@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <MainPageSection/>
-      {/* <Card /> */}
+      <Card />
     </>
   );
 }

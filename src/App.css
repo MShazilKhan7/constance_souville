@@ -52,38 +52,55 @@ body{
 
 .main{
   background-color: var(--mainContainerColor);
-
 }
+
 .main-container{
   padding-left: 1.6rem;
   padding-right: 1.6rem;
   font-family: "PPeditorial-light";
   font-size: 110px;
   color: var(--fontColor);
-  height: 100%;
+  height: 100vh;
+
 }
+
 .firstHeadingContainer{
-  /* background-color: green; */
+  width: 100%;
+  height: 120px;
+  line-height: 1.2;
+  font-family: "PPeditorial-light";
+  font-size: 110px;
   display: flex;
   justify-content: space-between;
-  font-size: 110px;
-  font-family: "PPeditorial-light";
-  font-weight: 500;
   color: #3F3B37;
+  overflow: hidden;
 }
+
 .firstHeadingContainer .left span:nth-child(2){
   font-family: "PPeditorial-lightItalic";
 }
+
 .firstHeadingContainer .right span:nth-child(3){
   font-family: "PPeditorial-lightItalic";
 }
+
+
 .firstHeadingContainer div span{
   margin-right:-4px;
+  margin-top: 110px;
 }
 
 .main-container div{
   display: flex;
   justify-content: space-between;
+}
+
+.main-container span{
+  margin-top: 110px;
+}
+.main-container div{
+  height: 110px;
+  overflow: hidden;
 }
 .secondHeadingContainer{
     position: relative;
@@ -99,6 +116,8 @@ body{
     margin-top: 80px;
 }
 
+
+
 .secondHeadingContainer .loader{
   position: absolute;
   width: 100%;
@@ -106,8 +125,7 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #3F3B37;
-  color: wheat;
+  color: var(--fontColor);
   font-size: 110px;
 }
 
@@ -116,7 +134,7 @@ body{
   display: flex;
   justify-content: center;
 }
-.loader div 
+
 .fourthHeadingContainer .right span:nth-child(2){
   padding-right: 20px;
 } 

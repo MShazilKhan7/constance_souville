@@ -24,25 +24,31 @@ const getRandomIntegerBwRange  = (left,right) =>{
 
 function MainPageSection(){
     const [value, setValue] = useState(0);
-    const loaderContainer = useRef()
+    const loaderContainer   = useRef()
+    const firstContainer    = useRef()
+    let spans;
     let i=0
     useEffect(() => {
         // starts after the loader completes animating 
         animateLoader();
+
         setTimeout(()=>{
             console.log("starting");
-            const loader=setInterval(() => {
+            const loader = setInterval(() => {
                 if(leftInterval==100){
-                    rightInterval=100;
+                   rightInterval=100;
                    clearInterval(loader)
                    reverseLoader();
+                   animateTopHeading();
                 }
+
                 let loaderValue = getRandomIntegerBwRange(leftInterval, rightInterval);
-    
+
                 if (loaderValue > 98) {
                     console.log("NOW  the Value is: ", loaderValue);
                     loaderValue = 100;
                 }
+
                 // Update the state based on the previous state
                 setValue((prevVal)=>loaderValue);
                 
@@ -55,6 +61,9 @@ function MainPageSection(){
             }, 150);
     
         },1000)
+        // render honay ke baad values leingy span se
+        spans = (firstContainer.current.querySelectorAll('div span'));
+
     }, []); 
    
     // 
@@ -70,16 +79,27 @@ function MainPageSection(){
      
     },[])
 
+    const animateTopHeading = useCallback(()=>{
+        console.log(spans)
+        gsap.to(spans,{
+            y: "-110px",
+            duration: 0.8,
+            delay: 1.5,
+            stagger: 0.02,
+            ease: "expo"
+        })
+    })
 
-    
+
+   
+
 return(
     
-    <div className="main-container">
-        <div className="firstHeadingContainer">
+    <div ref={firstContainer} className="main-container">
+        <div  className="firstHeadingContainer">
             <div className="left">
                 {name.split('').map((character,index)=>{
-                    return <span key={index}>{character}</span>
-                })
+                    return <span key={index}>{character}</span>})
                 }
             </div>
             <div className="right">
@@ -120,6 +140,7 @@ return(
                     })}
             </div>
         </div>
+
         <div className="fourthHeadingContainer">
             <div className="left">
                         {based.split('').map((character,index)=>{
