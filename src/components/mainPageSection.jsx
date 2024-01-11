@@ -110,7 +110,7 @@ return(
         </div>
 
         <div className="secondHeadingContainer">
-            <div>
+
                 {/* {<Card/>} */}
                 <div className="center">
                     {french.split('').map((character,index)=>{
@@ -118,7 +118,6 @@ return(
                     })}
                 </div>
                 {/* {<Card/>} */}
-            </div>
             <div ref={loaderContainer} className="loader">
                 <div>
                 <p>{value}</p>
