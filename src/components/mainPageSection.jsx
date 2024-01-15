@@ -22,6 +22,10 @@ const getRandomIntegerBwRange  = (left,right) =>{
     return number;
 }
 
+const enableScroller = ()=>{
+    document.body.classList.remove('no-scroll');
+}
+
 function MainPageSection(){
     const [value, setValue] = useState(0);
     const loaderContainer   = useRef()
@@ -64,6 +68,9 @@ function MainPageSection(){
         // render honay ke baad values leingy span se
         spans = (firstContainer.current.querySelectorAll('div span'));
 
+        setTimeout(()=>{
+            enableScroller();
+        },5000)
     }, []); 
    
     // 
@@ -76,9 +83,7 @@ function MainPageSection(){
     },[])
     const reverseLoader = useCallback(()=>{
         t.reverse()
-     
     },[])
-
     const animateTopHeading = useCallback(()=>{
         console.log(spans)
         gsap.to(spans,{
@@ -88,7 +93,7 @@ function MainPageSection(){
             stagger: 0.02,
             ease: "expo"
         })
-    })
+    },[])
 
 
    

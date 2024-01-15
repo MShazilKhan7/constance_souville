@@ -35,13 +35,16 @@ html,body{
   width: 100%;
   height: 100%;
 }
-
-
+/* 
+.no-scroll{
+  overflow: hidden;
+} */
 :root{
   --bodyColor: #B0B0A6;
   --mainContainerColor: #C1C0B6;
   --fontColor: #3F3B37;
   --transitionColor: #3f3b37;
+  --secondFontColor: #3F3B37;
 }
 
 
@@ -59,44 +62,46 @@ body{
 .main-container{
   padding-left: 1.6rem;
   padding-right: 1.6rem;
+  padding-top: 0.5rem;
   font-family: "PPeditorial-light";
   font-size: 110px;
   color: var(--fontColor);
   height: 100vh;
   width: 100%;
 }
-
-.firstHeadingContainer{
-  width: 100%;
-  line-height: 1.2;
-  font-family: "PPeditorial-light";
-  font-size: 110px;
-  display: flex;
-  justify-content: space-between;
-  color: #3F3B37;
+.main-container div{
+  height: 110px;
   overflow: hidden;
 }
-
-.firstHeadingContainer .left span:nth-child(2){
-  font-family: "PPeditorial-lightItalic";
+.firstHeadingContainer{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  width: 100%;
+  line-height: 0.9;
+  font-family: "PPeditorial-light";
+  font-size: 110px;
+  color: #3F3B37;
 }
 
-.firstHeadingContainer .right span:nth-child(3){
-  font-family: "PPeditorial-lightItalic";
-}
-.firstHeadingContainer .right span:last-child{
-  font-family: "PPeditorial-lightItalic";
-}
-.firstHeadingContainer .left span:nth-child(6){
-  font-family: "PPeditorial-lightItalic";
-}
+/* letter styling */
+        .firstHeadingContainer .left span:nth-child(2){
+          font-family: "PPeditorial-lightItalic";
+        }
 
-
+        .firstHeadingContainer .right span:nth-child(3){
+          font-family: "PPeditorial-lightItalic";
+        }
+        .firstHeadingContainer .right span:last-child{
+          font-family: "PPeditorial-lightItalic";
+        }
+        .firstHeadingContainer .left span:nth-child(6){
+          font-family: "PPeditorial-lightItalic";
+        }
 
 
 .firstHeadingContainer div span{
-  margin-right:-4px;
-  margin-top: 110px;
+  letter-spacing: -3px;
 }
 
 .firstHeadingContainer .right{
@@ -107,14 +112,15 @@ body{
   display: flex;
   justify-content: space-between;
 }
+.main-container>div{
+  border-bottom: 1.2px solid var(--fontColor);
+
+}
 
 .main-container span{
   margin-top: 110px;
 }
-.main-container div{
-  height: 110px;
-  overflow: hidden;
-}
+
 .secondHeadingContainer{
     position: relative;
     padding: 5px;
@@ -210,4 +216,85 @@ body{
   display: flex;
   justify-content: space-between;
   font-size: 10px;
+}
+
+
+
+/*  about section */
+.about-section{
+  width: 100%;
+  padding: 100px 40px 40px;
+  display: flex;
+  font-family: "PPmontreal-reg";  
+  color: var(--secondFontColor);
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.about-section .leftInfo{
+  font-size: 25px;
+  font-family: "PPeditorial-Regular";
+  font-weight: 400;
+  width: 40%;
+}
+
+#great{
+  font-family: "PPeditorial-italic";
+}
+.about-section .rightInfo{
+  padding: 0 19vw;
+  /* background-color: red; */
+}
+
+.companies-container{
+  padding: 10vw 0;
+  width: 100%
+}
+.company{
+  width: 100%;
+  /* background-color: green; */
+}
+.company td{
+  /* background: yellow; */
+  border-bottom:1px solid #3F3B37;
+}
+.company td:first-child{
+  width: 40%;
+}
+
+.company td:not(:first-child){
+  width: 40%;
+}
+.company td:last-child{
+  width: 10%;
+}
+
+
+
+/* work section styles */
+
+.work-section{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: "PPmontreal-Reg";
+  font-size: 110px;
+  font-weight: 400;
+  letter-spacing: -4px;
+  color: var(--fontColor);
+}
+.work-section div{
+  line-height: 1;
+  border-bottom: 1px solid var(--fontColor);
+}
+
+.work-section div:nth-child(2){
+  display: flex;
+  justify-content: right;
+  padding: 0 20px;
+}
+.work-section div:nth-child(3){
+  display: flex;
+  justify-content: center;
+  /* padding: 0 20px; */
 }
