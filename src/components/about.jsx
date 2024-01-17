@@ -38,15 +38,17 @@ function About() {
           <p>Technologies I commonly use : SCSS, Javascript (ES2020), Nuxt3, Wordpress, DatoCMS, GSAP, Vite, Webpack.</p>
           </div>
           <table className="companies-container">
+            <tbody>
             {companies.map((company,index)=>{
                 return (
-                  <tr className="company">
+                  <tr key={index} className="company">
                     <td>{company.name}</td>
                     <td>{company.from}</td>
                     <td>{company.to}</td>
                   </tr>
                 )
             })}
+            </tbody>
           </table>
         </div>
         </div>

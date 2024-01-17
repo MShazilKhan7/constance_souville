@@ -2,6 +2,7 @@ import React, { useCallback, useState,useEffect, useRef } from "react";
 import Card from "./smallCard";
 import gsap from "gsap";
 
+
 let name = "Constance";
 let lastname = "Souville";
 let french = "French";
@@ -13,6 +14,19 @@ let montreal = "in montreal";
 let leftInterval  =   0;
 let rightInterval =   10;
 let intervals = [20,40,50,60,70,80,90,100]
+
+export const staggerLetterAnimation = (spans,delay)=>{
+    console.log(spans)
+    gsap.to(spans,{
+        y: "-110px",
+        duration: 0.8,
+        delay: delay,
+        stagger: 0.02,
+        ease: "expo.out"
+    })
+}
+
+
 const getRandomIntegerBwRange  = (left,right) =>{
     console.log("L:",left)
     console.log("R:",right)
@@ -43,7 +57,7 @@ function MainPageSection(){
                    rightInterval=100;
                    clearInterval(loader)
                    reverseLoader();
-                   animateTopHeading();
+                   staggerLetterAnimation(spans, 1.5);
                 }
 
                 let loaderValue = getRandomIntegerBwRange(leftInterval, rightInterval);
@@ -84,17 +98,7 @@ function MainPageSection(){
     const reverseLoader = useCallback(()=>{
         t.reverse()
     },[])
-    const animateTopHeading = useCallback(()=>{
-        console.log(spans)
-        gsap.to(spans,{
-            y: "-110px",
-            duration: 0.8,
-            delay: 1.5,
-            stagger: 0.02,
-            ease: "expo"
-        })
-    },[])
-
+  
 
    
 
