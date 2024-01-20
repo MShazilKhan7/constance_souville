@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+body, h1, h2, h3, p, div {
+  margin: 0;
+  padding: 0;
+}
+
 @font-face {
   font-family: "PPeditorial-Regular";
   src: url(../public/fonts/PPEditorialNew-Regular.woff2);
@@ -29,6 +34,7 @@
   font-family: "PPmontreal-reg";
   src: url(../public/fonts/PPNeueMontreal-Regular.woff2);
 }
+
 
 
 html,body{
@@ -311,3 +317,20 @@ body{
   padding: 0 20px;
 }
  
+
+
+.project-section{
+  display: flex;
+  width: 100%;
+  background-color: orange;
+}
+
+.pr-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 22rem;
+  min-height: 16.8rem;
+  padding: 2rem;
+  border-bottom-right-radius: 1rem;
+}
