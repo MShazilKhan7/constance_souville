@@ -3,11 +3,11 @@ import React from "react";
 
 
 export function ProjectCard({data}) {
-    let classes = 'pr-card ' + `${data.classes}` + ' position-relative bg-light';
+    let classes = 'pr-card ' + `${data.classes}` + ' position-relative';
     console.log(classes)
     return(
         <>  
-            <div className={classes}>
+            <div style={data.styles} className={classes}>
                 <div className="top-section d-flex justify-content-between">
                     <p>{data.companyName}</p>
                     <p>{data.year}</p>
