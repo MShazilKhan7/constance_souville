@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ProjectCard } from "./projectCard";
-
+import CursorFollower from "./mousefollower";
 
 
 let data = [{
@@ -98,14 +98,31 @@ let data = [{
 // }
 
 function ProjectSection(){
+    const projectSectionRef = useRef();
+    const [showCursor, setShowCursor]  = useState(false);
+    // when use effect runs when component mounted
+  
+    useEffect(()=>{
+        projectSectionRef.current.addEventListener("mouseover", ()=>{
+            setShowCursor(true)
+        })
+        projectSectionRef.current.addEventListener("mouseleave", ()=>{
+            setShowCursor(false)
+        })
+    })
+    
+
+   
     return(
         <>
-        <div className="project-section">
+
+        <div ref={projectSectionRef} className="project-section">
             {data.map((prCard, index)=>{
                 return <ProjectCard key={index} data={prCard}/>
             })}
             {/* <ProjectCard data={data}/> */}
         </div>
+        {showCursor? <CursorFollower/> : ""}
         </>
     )
 }

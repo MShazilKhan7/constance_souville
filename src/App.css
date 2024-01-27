@@ -67,16 +67,15 @@ body{
   border-radius: 28px;
   padding-left: 1.6rem;
   padding-right: 1.6rem;
+  overflow: hidden;
 }
 
 .main-container{
-  /* padding-left: 1.6rem;
-  padding-right: 1.6rem; */
   padding-top: 0.5rem;
   font-family: "PPeditorial-light";
   font-size: 110px;
   color: var(--fontColor);
-  height: 100vh;
+  /* height: 100vh; */
   width: 100%;
 }
 .main-container div{
@@ -282,7 +281,6 @@ body{
 
 
 /* work section styles */
-
 .work-section{
   width: 100%;
   display: flex;
@@ -301,7 +299,7 @@ body{
 }
 .work-section div{
   width: 100%;
-  line-height: 1;
+  line-height: 0.9;
   border-bottom: 1px solid var(--fontColor);
   height: 110px;
   overflow: hidden;
@@ -374,7 +372,21 @@ body{
 /* MOUSE FOLLOWEE */
 
 .mouse-follower{
-  
+  width: 10px;
+  height: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  border-radius: 100%;
+  background-color: var(--bodyColor);
+  /* transform-origin: 50% 50%;/ */
+  /* scale: 0; */
+  user-select: none;
+  pointer-events: none;
+  transition: all ease-out .3s;
+  transform: translateZ(-10rem);
+  opacity: 0;
 }
 
 
