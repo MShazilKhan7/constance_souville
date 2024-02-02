@@ -334,8 +334,48 @@ body{
   min-height: 16.8rem;
   padding: 2rem;
   border-bottom-right-radius: 1rem;
+  position: relative;
+  overflow: hidden;
+} 
+
+.top-section,.bottom-section{
+  display: flex;
+  justify-content: space-between;
 }
 
+.pr-card .pr-hidden-text{
+  position: absolute;
+  bottom: 1rem;
+  /* top: 80%; */
+  height: 250px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden; 
+
+}
+
+.pr-hidden-text div{
+  text-transform: "lowercase";
+  font-family: "PPmontreal-reg";
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  /* width: fit-content; */
+  position: relative;
+  top: 100%;
+  transform: rotate(10deg);
+  flex-shrink: 0;
+  font-size: 231px;
+  cursor: pointer;
+
+}
+
+/* .pr-hidden-text div::after{
+} */
 
 /* start from first col and takes two columns */
 .span-col-1-2{
@@ -380,12 +420,9 @@ body{
   z-index: 10000;
   border-radius: 100%;
   background-color: var(--bodyColor);
-  /* transform-origin: 50% 50%;/ */
-  /* scale: 0; */
   user-select: none;
   pointer-events: none;
   transition: all ease-out .3s;
-  transform: translateZ(-10rem);
   opacity: 0;
 }
 

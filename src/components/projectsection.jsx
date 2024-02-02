@@ -6,7 +6,7 @@ import CursorFollower from "./mousefollower";
 let data = [{
     companyName : "Danka",
     year        : "2022",
-    website     : "Sabe s Mension",
+    website     : "Dankaf",
     counter     : 1,
     classes     : 'span-col-1-2',
     styles      : {
@@ -16,7 +16,7 @@ let data = [{
 {
     companyName : "Danka",
     year        : "2022",
-    website     : "Sabe s Mension",
+    website     : "AxeSaone",
     counter     : 1,
     classes     : 'span-col-3-2',
     styles      : {
@@ -26,7 +26,7 @@ let data = [{
 {
     companyName : "Danka",
     year        : "2022",
-    website     : "Sabe s Mension",
+    website     : "Archeologiefr",
     counter     : 1,
     classes     : 'span-col-1-3',
     styles      : {
@@ -36,7 +36,7 @@ let data = [{
 {
     companyName : "Danka",
     year        : "2022",
-    website     : "Sabe s Mension",
+    website     : "EsoppGroup",
     counter     : 1,
     classes     : 'span-col-4-2',
     styles      : {
@@ -46,7 +46,7 @@ let data = [{
 {
     companyName : "Danka",
     year        : "2022",
-    website     : "Sabe s Mension",
+    website     : "VoeuxDanka",
     counter     : 1,
     classes     : 'span-col-1-2',
     styles      : {
@@ -56,7 +56,7 @@ let data = [{
 {
     companyName : "Danka",
     year        : "2022",
-    website     : "Sabe s Mension",
+    website     : "MAMCStEtienne",
     counter     : 1,
     classes     : 'span-col-3-3',
     styles      : {
@@ -67,7 +67,7 @@ let data = [{
 {
     companyName : "Danka",
     year        : "2022",
-    website     : "Sabe s Mension",
+    website     : "CapsurleRhone",
     counter     : 1,
     classes     : 'span-col-2-2',
     styles      : {
@@ -78,7 +78,7 @@ let data = [{
 {
     companyName : "Danka",
     year        : "2022",
-    website     : "Sabe s Mension",
+    website     : "SabeMasson",
     counter     : 1,
     classes     : 'span-col-4-2',
     styles      : {
@@ -86,17 +86,7 @@ let data = [{
 
     }
 },
-
-
 ]
-// let data1 = {
-//     companyName : "Danka",
-//     year        : "2022",
-//     website     : "Sabe s Mension",
-//     counter     : 1,
-//     classes     : 'span-4',
-// }
-
 function ProjectSection(){
     const projectSectionRef = useRef();
     const [showCursor, setShowCursor]  = useState(false);
@@ -122,7 +112,7 @@ function ProjectSection(){
             })}
             {/* <ProjectCard data={data}/> */}
         </div>
-        {showCursor? <CursorFollower/> : ""}
+        {/* {showCursor? <CursorFollower/> : ""} */}
         </>
     )
 }
