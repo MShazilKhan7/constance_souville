@@ -8,20 +8,19 @@ import Work from './components/work';
 import { ProjectCard } from './components/projectCard';
 import ProjectSection from './components/projectsection';
 import CursorFollower from './components/mousefollower';
+import { Socials } from './components/socialsSection';
 
 function App() {
-
-
-
   return (
     <>
     <div>
-      {/* < CursorFollower /> */}
-      <MainPageSection/>
-      {/* // <Card /> */}
-      <About/> 
-      <Work />
-      <ProjectSection />
+        {/* < CursorFollower /> */}
+        <MainPageSection/>
+        {/* // <Card /> */}
+        <About/> 
+        <Work />
+        <ProjectSection />
+        <Socials/>
       </div>
     </>
   );

@@ -5,29 +5,45 @@ import gsap from "gsap";
 export function ProjectCard({data}) {
     let classes = 'pr-card ' + `${data.classes}` + ' position-relative';
     const textRef = useRef(null);
+    const card = useRef(null);
+    const bottomSectionRef = useRef(null);
     let {website} = data
-    website = website.split('');
+    website = website ? website.split("") : [];
+  
+    useEffect(() => {
+      card.current.addEventListener("mouseenter", ()=>{
+        slideText(textRef.current, bottomSectionRef.current, card.current)
+      })
+    
 
-    useEffect(()=>{
-        textAnimate(textRef.current);
-        // slidetext(textRef.current);
-    },[])
+    }, []);
+  
     return(
         <>  
-            <div style={data.styles} className={classes}>
+            <div ref={card} style={data.styles} className={classes}>
                 <div className="top-section d-flex justify-content-between">
                     <p>{data.companyName}</p>
                     <p>{data.year}</p>
                 </div>
                 
-                <div className="bottom-section d-flex justify-content-between">
+                <div ref={bottomSectionRef} className="bottom-section d-flex justify-content-between">
+                  <div>
                     <p>{data.website}</p>
                     <p>{data.counter}</p>
+                  </div>
                 </div>
+
                 <div ref={textRef} className="pr-hidden-text">
-                    {website.map((character)=>{
-                        return <div>{character}</div>
-                    })}
+                    <div>
+                        {website.map((c,index)=>{
+                          return <div key={index}>{c}</div>
+                        })}
+                    </div>
+                    <div>
+                        {website.map((c,index)=>{
+                          return <div key={index}>{c}</div>
+                        })}
+                    </div>
                 </div>
             </div>
         </>
@@ -36,128 +52,57 @@ export function ProjectCard({data}) {
 }
 
 
-const textAnimate = (textcontainer)=>{
-    // let timeline  = gsap.timeline()
-    gsap.to(textcontainer.children, {
-        y: "-100%",
-        duration: 1,
-        stagger: 0.01,
-        ease: "sine",
-        transform: `rotate(${0}deg)`,
+
+const reverseAnimate = (textcontainer,bottomSect)=>{
+  console.log("reverse Animation :  ", textcontainer);
+    const t  = gsap.timeline()
+    t.to(textcontainer.children, {
+      y: "100%",
+      duration: 1,
+  })
+    const height = (-1)*parseInt(window.getComputedStyle(bottomSect.    firstChild).getPropertyValue('height'))
+    console.log("height is: ", height);
+    t.fromTo(bottomSect.children,{y: (-1)*height},{
+      y: 0,
+      duration: 1,
+      ease: "linear"
+    })
+}
+
+const slideText  = (textRef,bottomSec,card)=>{
+  // slide the bottom section downward
+  const t  = gsap.timeline()
+  const height = parseInt(window.getComputedStyle(bottomSec.    firstChild).getPropertyValue('height'))
+
+  const bottomAnime = t.fromTo(bottomSec.children,{y:0},{
+    y: height,
+    duration: 3,
+    ease: "expo.inOut"
+  })
+
+  const slideUp = t.to(textRef.children, {
+      y: "-100%",
+      duration: .9,
+      ease: "sine",
+    })
+    
+    const mytext   = textRef.firstChild.cloneNode(true);
+    if(!mytext){
+      return;
+    }
+
+    textRef.append(mytext)
+    const width = -1 * parseInt(window.getComputedStyle(textRef.firstChild).getPropertyValue('width'));
+
+    const slideLeft = t.to(textRef.children,{
+      x: width,
+      duration: 3,
+      repeat: -1,
     })
 
-    slidetext(textcontainer)
+    card.addEventListener("mouseleave", ()=>{
+      slideLeft.paused(true)
+      reverseAnimate(textRef,bottomSec)
+    })
+
 }
-
-function horizontalLoop(items, config) {
-  items = gsap.utils.toArray(items);
-  config = config || {};
-  let tl = gsap.timeline({
-      repeat: config.repeat,
-      paused: config.paused,
-      defaults: { ease: "none" },
-      onReverseComplete: () => tl.totalTime(tl.rawTime() + tl.duration() * 100),
-    }),
-    length = items.length,
-    startX = items[0].offsetLeft,
-    times = [],
-    widths = [],
-    xPercents = [],
-    curIndex = 0,
-    pixelsPerSecond = (config.speed || 1) * 100,
-    snap = config.snap === false ? (v) => v : gsap.utils.snap(config.snap || 1), // some browsers shift by a pixel to accommodate flex layouts, so for example if width is 20% the first element's width might be 242px, and the next 243px, alternating back and forth. So we snap to 5 percentage points to make things look more natural
-    totalWidth,
-    curX,
-    distanceToStart,
-    distanceToLoop,
-    item,
-    i;
-  gsap.set(items, {
-    // convert "x" to "xPercent" to make things responsive, and populate the widths/xPercents Arrays to make lookups faster.
-    xPercent: (i, el) => {
-      let w = (widths[i] = parseFloat(gsap.getProperty(el, "width", "px")));
-      xPercents[i] = snap(
-        (parseFloat(gsap.getProperty(el, "x", "px")) / w) * 100 +
-          gsap.getProperty(el, "xPercent")
-      );
-      return xPercents[i];
-    },
-  });
-  gsap.set(items, { x: 0 });
-  totalWidth =
-    items[length - 1].offsetLeft +
-    (xPercents[length - 1] / 100) * widths[length - 1] -
-    startX +
-    items[length - 1].offsetWidth *
-      gsap.getProperty(items[length - 1], "scaleX") +
-    (parseFloat(config.paddingRight) || 0);
-  for (i = 0; i < length; i++) {
-    item = items[i];
-    curX = (xPercents[i] / 100) * widths[i];
-    distanceToStart = item.offsetLeft + curX - startX;
-    distanceToLoop =
-      distanceToStart + widths[i] * gsap.getProperty(item, "scaleX");
-    tl.to(
-      item,
-      {
-        xPercent: snap(((curX - distanceToLoop) / widths[i]) * 100),
-        duration: distanceToLoop / pixelsPerSecond,
-      },
-      0
-    )
-      .fromTo(
-        item,
-        {
-          xPercent: snap(
-            ((curX - distanceToLoop + totalWidth) / widths[i]) * 100
-          ),
-        },
-        {
-          xPercent: xPercents[i],
-          duration:
-            (curX - distanceToLoop + totalWidth - curX) / pixelsPerSecond,
-          immediateRender: false,
-        },
-        distanceToLoop / pixelsPerSecond
-      )
-      .add("label" + i, distanceToStart / pixelsPerSecond);
-    times[i] = distanceToStart / pixelsPerSecond;
-  }
-  function toIndex(index, vars) {
-    vars = vars || {};
-    Math.abs(index - curIndex) > length / 2 &&
-      (index += index > curIndex ? -length : length); // always go in the shortest direction
-    let newIndex = gsap.utils.wrap(0, length, index),
-      time = times[newIndex];
-    if (time > tl.time() !== index > curIndex) {
-      // if we're wrapping the timeline's playhead, make the proper adjustments
-      vars.modifiers = { time: gsap.utils.wrap(0, tl.duration()) };
-      time += tl.duration() * (index > curIndex ? 1 : -1);
-    }
-    curIndex = newIndex;
-    vars.overwrite = true;
-    return tl.tweenTo(time, vars);
-  }
-  tl.next = (vars) => toIndex(curIndex + 1, vars);
-  tl.previous = (vars) => toIndex(curIndex - 1, vars);
-  tl.current = () => curIndex;
-  tl.toIndex = (index, vars) => toIndex(index, vars);
-  tl.times = times;
-  tl.progress(1, true).progress(0, true); // pre-render for performance
-  if (config.reversed) {
-    tl.vars.onReverseComplete();
-    tl.reverse();
-  }
-  return tl;
-}
-
-const slidetext = (text)=>{
-    for (let index = 0; index < text.children.length; index++) {
-        console.log("w: ", text.children[index].widthLeft);
-      
-    }
-    horizontalLoop(text.children, {paused:false, repeat: -1})
-}
-
-
-

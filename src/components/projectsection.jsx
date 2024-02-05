@@ -4,9 +4,9 @@ import CursorFollower from "./mousefollower";
 
 
 let data = [{
-    companyName : "Danka",
+    companyName : "danka",
     year        : "2022",
-    website     : "Dankaf",
+    website     : "danka",
     counter     : 1,
     classes     : 'span-col-1-2',
     styles      : {
@@ -112,7 +112,7 @@ function ProjectSection(){
             })}
             {/* <ProjectCard data={data}/> */}
         </div>
-        {/* {showCursor? <CursorFollower/> : ""} */}
+        {showCursor? <CursorFollower/> : ""}
         </>
     )
 }
